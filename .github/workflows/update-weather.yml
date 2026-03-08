@@ -6,21 +6,28 @@ on:
     - cron: '0 * * * *'
   workflow_dispatch: # Allows manual trigger
 
+env:
+  PYTHON_VERSION: '3.12'
+
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update-weather:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
 
-      - name: Set up Python
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install dependencies
         run: pip install requests
