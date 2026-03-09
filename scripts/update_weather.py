@@ -30,7 +30,7 @@ API_URL = (
 )
 
 # ── Output path (relative to repo root) ───────────────────────────
-OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "html", "index.html")
+OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "docs", "index.html")
 
 # ── WMO Weather Code mapping ──────────────────────────────────────
 WMO = {
@@ -455,7 +455,7 @@ footer          {{ animation-delay: 0.3s; }}
 def main():
     print("Fetching weather data for Kraków…")
     data = fetch_weather()
-    print("Generating html/index.html…")
+    print("Generating docs/index.html…")
     html = generate_html(data)
 
     output = os.path.normpath(OUTPUT_PATH)
