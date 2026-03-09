@@ -5,6 +5,7 @@ and generate a styled static HTML dashboard.
 """
 
 import json
+import os
 import requests
 from datetime import datetime, timezone, timedelta
 
@@ -27,6 +28,9 @@ API_URL = (
     "&timezone=Europe%2FWarsaw"
     "&forecast_days=7"
 )
+
+# ── Output path (relative to repo root) ───────────────────────────
+OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "html", "index.html")
 
 # ── WMO Weather Code mapping ──────────────────────────────────────
 WMO = {
@@ -451,11 +455,15 @@ footer          {{ animation-delay: 0.3s; }}
 def main():
     print("Fetching weather data for Kraków…")
     data = fetch_weather()
-    print("Generating index.html…")
+    print("Generating html/index.html…")
     html = generate_html(data)
-    with open("index.html", "w", encoding="utf-8") as f:
+
+    output = os.path.normpath(OUTPUT_PATH)
+    os.makedirs(os.path.dirname(output), exist_ok=True)
+
+    with open(output, "w", encoding="utf-8") as f:
         f.write(html)
-    print("Done ✓")
+    print(f"Done ✓  Wrote {output}")
 
 
 if __name__ == "__main__":

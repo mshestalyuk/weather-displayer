@@ -1,12 +1,10 @@
-# 🌤️ Kraków Weather Dashboard
+# 🌤️ Cracow Weather Dashboard
 
-A static weather dashboard for Kraków, Poland — automatically updated every hour via GitHub Actions and served through GitHub Pages.
+A static weather dashboard for Cracow, Poland — automatically updated every hour via GitHub Actions and served through GitHub Pages.
 
 ## 🔗 Live Site
 
-👉 **[View the live dashboard](https://<YOUR_GITHUB_USERNAME>.github.io/krakow-weather/)**
-
-> Replace `<YOUR_GITHUB_USERNAME>` with your actual GitHub username after deploying.
+👉 **[View the live dashboard](https://mshestalyuk.github.io/weather-displayer/)**
 
 ---
 
@@ -19,7 +17,7 @@ This project uses the **[Open-Meteo API](https://open-meteo.com/)** — a free, 
 - No authentication required — perfect for GitHub Actions
 - Provides current weather + 7-day forecast
 - High-quality data sourced from national weather services
-- Covers Kraków coordinates (50.0647°N, 19.9450°E)
+- Covers Cracow coordinates (50.0647°N, 19.9450°E)
 
 ---
 
@@ -36,47 +34,13 @@ This project uses the **[Open-Meteo API](https://open-meteo.com/)** — a free, 
 ## 🚀 How to Run the Workflow Manually
 
 1. Go to the **Actions** tab of this repository
+![Alt text](images/actions.png)
 2. Select **"Update Weather Data"** from the left sidebar
+![Alt text](images/workflow.png)
 3. Click the **"Run workflow"** button on the right
+![Alt text](images/run_workflow_1.png)
 4. Select the branch (default: `main`) and click **"Run workflow"**
-
-Alternatively, use the GitHub CLI:
-
-```bash
-gh workflow run update-weather.yml
-```
-
----
-
-## 📁 Project Structure
-
-```
-├── .github/
-│   └── workflows/
-│       └── update-weather.yml   # GitHub Actions workflow (hourly cron)
-├── update_weather.py            # Python script to fetch data & generate HTML
-├── index.html                   # Generated weather page (auto-updated)
-└── README.md                    # This file
-```
-
----
-
-## 🛠️ Setup Instructions
-
-1. **Fork or clone** this repository
-2. **Enable GitHub Pages**:
-   - Go to Settings → Pages
-   - Source: **Deploy from a branch**
-   - Branch: `main` / `/ (root)`
-   - Save
-3. **Enable Actions**:
-   - Go to Settings → Actions → General
-   - Under "Workflow permissions", select **Read and write permissions**
-   - Check **"Allow GitHub Actions to create and approve pull requests"**
-   - Save
-4. **Update the README** with your actual GitHub Pages URL
-5. Optionally **trigger the workflow manually** to get the first data update
-
+![Alt text](images/run_workflow_2.png)
 ---
 
 ## 📊 What's Displayed
